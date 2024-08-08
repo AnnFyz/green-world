@@ -1,7 +1,14 @@
 using UnityEngine;
 
+public enum TrashType
+{
+    rest,
+    bio,
+    plastik
+}
 public class TrashBin : MonoBehaviour
 {
+    public TrashType trashType;
     public string binType;
     public PlayerController playerController;
     public GlowEffect glowEffect;

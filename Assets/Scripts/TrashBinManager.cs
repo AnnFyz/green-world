@@ -4,11 +4,22 @@ using UnityEngine;
 
 public class TrashBinManager : MonoBehaviour
 {
-
+    public static TrashBinManager Instance { get; private set; }
     private bool allTrashCollected;
     private int collectedTrash;
     public TrashSpawner trashSpawner;
 
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +57,8 @@ public class TrashBinManager : MonoBehaviour
         if (collectedTrash >= trashSpawner.GetNumberOfTrashToSpawn() - 8)
         {
             allTrashCollected = true;
+            GameManager.Instance.isWon = true;
+            GameManager.Instance.onWinning?.Invoke();
         }
     }
 

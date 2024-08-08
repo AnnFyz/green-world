@@ -2,18 +2,18 @@ using UnityEngine;
 
 public class Option1Controller : MonoBehaviour
 {
-    private QuizManager quizManager;
+    //private QuizManager quizManager;
 
-    void Start()
-    {
-        quizManager = FindObjectOfType<QuizManager>();
-    }
+    //void Start()
+    //{
+    //    quizManager = FindObjectOfType<QuizManager>();
+    //}
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            quizManager.PlayerOnOption1(true);
+            QuizManager.Instance.PlayerOnOption1(true);
         }
     }
 
@@ -21,7 +21,7 @@ public class Option1Controller : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            quizManager.PlayerOnOption1(false);
+            QuizManager.Instance.PlayerOnOption1(false);
         }
     }
 }

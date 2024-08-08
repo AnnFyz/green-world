@@ -4,7 +4,9 @@ using TMPro;
 using System.Collections;
 
 public class QuizManager : MonoBehaviour
+
 {
+    public static QuizManager Instance { get; private set; }
     //public GameObject option1; // Das erste Bild
     //public GameObject option2; // Das zweite Bild
     public TextMeshProUGUI scoreText; // Text für den Punktestand
@@ -28,6 +30,17 @@ public class QuizManager : MonoBehaviour
     private bool endOfQuiz;
     public AchievementDoorController achievementDoorController;
 
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
     void Start()
     {
         UpdateUI();
